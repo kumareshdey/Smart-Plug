@@ -1,0 +1,89 @@
+
+
+
+
+
+
+<html>
+
+<head>
+	<title>SMART PLUG</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<center>
+		<h1 style="color:yellow;">SMART PLUG</h1>
+
+	</center>
+
+	<style> 
+.btn-width-height
+	{
+		width:200px;
+		height:50px; 
+		 background-color: white; 
+    color: black; 
+	}
+	.btn-width-height:hover
+	{
+	 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	 background-color: black;
+    color: white;
+	 width:200px;
+		height:50px; 
+	}
+
+	</style>
+</head>
+<body style="font-family:Roboto;background:green;">
+
+	<script type="text/javascript" src="/control?filename=bolt.js&name=BOLT1334266">setDebug(true);</script>	
+	<br><br>
+	<script>var D_NAME="BOLT1334266"; </script>
+	
+	<center>
+		
+		<button class="btn-width-height" type="button" onclick="digitalCloudMultiWrite([0,1],[1,0],D_NAME);">ON
+		</button>
+		<button class="btn-width-height" type="button" onclick="digitalCloudMultiWrite([0,1],[0,0],D_NAME);">OFF
+		</button><br></br>
+		
+
+      
+	
+	</center>
+	<br></br>
+	<h2 style="color:white"> Smart Plug . Presented by: KUMARESH DEY</h2>
+	<script type="text/javascript">
+function readPir()
+{
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	var obj = JSON.parse(xmlhttp.responseText);
+	if(obj.success=="1")
+		{
+			if(obj.value==1)
+				ifttt();
+			
+		}
+	   	}
+	};
+	xmlhttp.open("GET","/digitalRead?pin=A0",true);
+	xmlhttp.send();
+}
+
+
+function ifttt()
+{
+	url="https://maker.ifttt.com/trigger/bolt/with/key/Inlzlry-RjF_CqBXjCy6DdJNNR9gqTd4PysoykTJbR";
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+	   	}
+	};
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+}
+</script>
+</body>
+</html>
